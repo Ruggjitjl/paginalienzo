@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lienzo Charro El Charro | Tapachula</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+:root{
+--rojo:#7A0C0C;
+--rojo2:#520808;
+--oro:#D4AF37;
+--gris:#f4f4f4;
+--sombra:0 20px 60px rgba(0,0,0,0.15);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+color:#333;
+background:white;
+}
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:30px;
+font-weight:600;
+}
+
+nav a:hover{color:var(--oro);}
+
+/* HERO */
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,0.6),rgba(122,12,12,0.8)),
+url("https://images.unsplash.com/photo-1599058917212-d750089bc07e");
+background-size:cover;
+background-position:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-family:'Playfair Display';
+font-size:4.5rem;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:1.4rem;
+max-width:700px;
+margin-bottom:30px;
+}
+
+.btn{
+background:var(--oro);
+padding:15px 40px;
+border-radius:40px;
+text-decoration:none;
+font-weight:700;
+color:black;
+}
+
+/* SECTIONS */
+
+section{
+padding:120px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:60px;
+}
+
+.section-title h2{
+font-family:'Playfair Display';
+font-size:3rem;
+color:var(--rojo);
+}
+
+/* EVENTOS */
+
+.eventos-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:40px;
+}
+
+.event-card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:var(--sombra);
+transition:0.4s;
+}
+
+.event-card:hover{transform:translateY(-10px);}
+
+.event-card img{
+width:100%;
+height:280px;
+object-fit:cover;
+}
+
+.event-content{padding:30px;}
+
+.event-content h3{color:var(--rojo);}
+
+/* EQUIPOS */
+
+.equipos-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:40px;
+}
+
+.team{
+background:var(--rojo);
+color:white;
+padding:50px;
+border-radius:20px;
+box-shadow:var(--sombra);
+}
+
+/* GALERIA */
+
+.galeria{
+background:#111;
+color:white;
+}
+
+.galeria-grid{
+column-count:4;
+column-gap:20px;
+}
+
+.galeria-grid img{
+width:100%;
+margin-bottom:20px;
+border-radius:15px;
+transition:0.3s;
+}
+
+.galeria-grid img:hover{
+transform:scale(1.05);
+}
+
+/* FAQ */
+
+.faq-item{
+margin-bottom:30px;
+padding:20px;
+background:var(--gris);
+border-radius:15px;
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+color:white;
+padding:80px 8%;
+text-align:center;
+}
+
+@media(max-width:900px){
+.galeria-grid{column-count:2;}
+.hero h1{font-size:3rem;}
+}
+
+@media(max-width:600px){
+.galeria-grid{column-count:1;}
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+<div style="color:white;font-weight:800;">El Charro</div>
+<div>
+<a href="#eventos">Eventos</a>
+<a href="#equipos">Equipos</a>
+<a href="#galeria">Galería</a>
+<a href="#faq">FAQ</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Lienzo Charro El Charro</h1>
+<p>Tradición y orgullo charro en Tapachula, Chiapas.</p>
+<a href="#eventos" class="btn">Ver Eventos</a>
+</section>
+
+<!-- EVENTOS DINÁMICOS DESDE ADMIN -->
+<section id="eventos">
+<div class="section-title">
+<h2>Eventos Destacados</h2>
+</div>
+
+<div class="eventos-grid">
+{% for evento in eventos %}
+<div class="event-card">
+<img src="/static/uploads/{{evento[5]}}">
+<div class="event-content">
+<h3>{{evento[1]}}</h3>
+<p><i class="fa fa-calendar"></i> {{evento[2]}} - {{evento[3]}}</p>
+<p>{{evento[4]}}</p>
+</div>
+</div>
+{% endfor %}
+</div>
+</section>
+
+<!-- EQUIPOS FIJOS -->
+<section id="equipos">
+<div class="section-title">
+<h2>Equipos Representativos</h2>
+</div>
+
+<div class="equipos-grid">
+
+<div class="team">
+<h3>La Mexicana</h3>
+<p>
+Equipo tradicional con una trayectoria destacada en competencias regionales y nacionales.
+Caracterizados por su elegancia, disciplina y dominio técnico en cada suerte charra,
+"La Mexicana" representa el orgullo y la pasión por la charrería en el sur de México.
+</p>
+</div>
+
+<div class="team">
+<h3>Tijuana</h3>
+<p>
+Un equipo reconocido por su fuerza, coordinación y espíritu competitivo.
+Con participaciones destacadas en campeonatos estatales,
+"Tijuana" combina juventud y experiencia manteniendo viva la tradición charra.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- GALERIA LLENA -->
+<section id="galeria" class="galeria">
+<div class="section-title">
+<h2>Galería</h2>
+</div>
+
+<div class="galeria-grid">
+<img src="https://images.unsplash.com/photo-1543946603-0a0e0f88d54f">
+<img src="https://images.unsplash.com/photo-1501706362039-c6b2a7a7c4d4">
+<img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e">
+<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba">
+<img src="https://images.unsplash.com/photo-1496567644554-2e4f4bfcf6c0">
+<img src="https://images.unsplash.com/photo-1483721310020-03333e577078">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+<img src="https://images.unsplash.com/photo-1520975922284-1d6a8c1a6e0f">
+<img src="https://images.unsplash.com/photo-1470165518283-3c4d3eac7a47">
+<img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e">
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<div class="section-title">
+<h2>Preguntas Frecuentes</h2>
+</div>
+
+<div class="faq-item">
+<h4>¿Dónde se ubica el lienzo?</h4>
+<p>En Tapachula, Chiapas, México.</p>
+</div>
+
+<div class="faq-item">
+<h4>¿Se pueden rentar las instalaciones?</h4>
+<p>Sí, el lienzo está disponible para eventos privados, competencias y espectáculos ecuestres.</p>
+</div>
+
+<div class="faq-item">
+<h4>¿Cómo puedo participar en un evento?</h4>
+<p>Puedes comunicarte directamente con la administración o revisar las convocatorias publicadas en la sección de eventos.</p>
+</div>
+
+</section>
+
+<footer>
+<h3>Lienzo Charro El Charro</h3>
+<p>Tapachula, Chiapas, México</p>
+<p>Tel: +52 962 123 4567</p>
+<p>© 2026 Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>

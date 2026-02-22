@@ -1,0 +1,86 @@
+body{
+font-family: 'Segoe UI';
+margin:0;
+background:white;
+color:#222;
+}
+
+header{
+background:#b30000;
+color:white;
+padding:40px;
+text-align:center;
+}
+
+header h1{
+font-size:40px;
+margin:0;
+}
+
+nav{
+background:#900000;
+padding:10px;
+text-align:center;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+}
+
+nav a:hover{
+color:#ffdede;
+}
+
+.container{
+padding:40px;
+}
+
+.card{
+background:white;
+border:2px solid #b30000;
+border-radius:10px;
+margin:20px;
+padding:20px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.02);
+}
+
+img{
+max-width:100%;
+border-radius:10px;
+}
+
+button{
+background:#b30000;
+color:white;
+border:none;
+padding:10px 20px;
+cursor:pointer;
+border-radius:5px;
+}
+
+button:hover{
+background:#800000;
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.admin-btn{
+background:black;
+color:white;
+padding:10px;
+text-decoration:none;
+}

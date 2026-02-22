@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Panel Admin</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+padding:40px;
+}
+
+.box{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+background:#7A0C0C;
+color:white;
+border:none;
+padding:10px;
+cursor:pointer;
+}
+
+img{
+width:150px;
+margin:10px;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>Panel Administrador</h1>
+
+<div class="box">
+
+<h2>Subir Evento</h2>
+
+<form method="POST" action="/subir_evento" enctype="multipart/form-data">
+
+<input name="titulo" placeholder="Titulo">
+
+<textarea name="descripcion"></textarea>
+
+<input type="date" name="fecha">
+
+<input type="time" name="hora">
+
+<input type="file" name="imagen">
+
+<button>Subir</button>
+
+</form>
+
+</div>
+
+
+<div class="box">
+
+<h2>Subir Foto Galería</h2>
+
+<form method="POST" action="/subir_galeria" enctype="multipart/form-data">
+
+<input type="file" name="imagen">
+
+<button>Subir</button>
+
+</form>
+
+</div>
+
+
+<div class="box">
+
+<h2>Editar Equipos</h2>
+
+<form method="POST" action="/editar_equipo">
+
+<input name="nombre" placeholder="Nombre equipo">
+
+<textarea name="descripcion"></textarea>
+
+<button>Guardar</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
